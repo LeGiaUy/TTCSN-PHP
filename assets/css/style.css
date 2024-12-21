@@ -20,22 +20,22 @@ h1{
 }
 
 h2{
-    font-size: 1.8rems;
+    font-size: 1.8rem;
     font-weight: 600;
 }
 
 h3{
-    font-size: 1.5rems;
+    font-size: 1.5rem;
     font-weight: 800;
 }
 
 h4{
-    font-size: 1.2rems;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 h5{
-    font-size: 1rems;
+    font-size: 1rem;
     font-weight: 400;
 }
 h6{
@@ -120,3 +120,68 @@ button:hover{
 #home span{
     color: coral;
 }
+
+#new .one img{
+    width: auto;
+    height: 100%;
+    background-position: center;
+    background-repeat: none;
+    background-size: cover; 
+}
+
+#new .one {
+    position: relative;
+    display: flex; /* Sử dụng Flexbox để căn giữa */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    overflow: hidden; /* Đảm bảo không có nội dung nào vượt khỏi khung */
+}
+
+#new .one img {
+    max-width: 100%; /* Đảm bảo ảnh không vượt quá khung */
+    max-height: 100%; /* Đảm bảo chiều cao ảnh nằm gọn trong khung */
+    object-fit: cover; /* Ảnh sẽ được cắt vừa với khung mà không bị méo */
+}
+
+#new .one .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: burlywood;
+    font-weight: bold;
+    transition: 0.4 ease;
+    opacity: 0.5;
+    background-color: rgb(1,1,1);
+    width: 100%;
+    height: 100%;
+}
+
+/* #new .one .details:hover {
+    background-color: cornsilk;
+} */
+
+#new .one:nth-child(1) .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: start;
+}
+
+#new .one:nth-child(2) .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+#new .one:nth-child(3) .details {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: end;
+}
+
+
