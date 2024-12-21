@@ -67,6 +67,7 @@ button:hover{
     left: 0;
     z-index: 10;
     box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+    text-wrap: nowrap;
 }
 .bg-body-tertiary .navbar-nav .nav-link{
     padding: 0 20px;
@@ -232,7 +233,11 @@ star i{
 }
 
 #banner h1{
-    color: coral;
+    color: #fb774b;
+}
+
+#banner h4{
+    color: #fff;
 }
 
 #banner button{
@@ -292,6 +297,28 @@ footer p{
 footer .copyright img{
     width: 120px;
     height: 68px;
+}
+
+.logo{
+    width: 40px;
+    height: 40px;
+}
+
+.navbar .brand{
+    color:coral;
+    margin: 3px 5px;
+    font-size: 1.5rem;
+    text-wrap: nowrap;
+    font-weight: 400;
+}
+
+.flogo{
+    width: 50px;
+    height: 50px;
+}
+
+.fp{
+    color: #999;
 }
 
 
