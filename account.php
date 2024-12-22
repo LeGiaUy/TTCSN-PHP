@@ -1,3 +1,14 @@
+<?php
+
+session_start();
+
+if(!isset($_SESSION['logged_in'])){
+    header('location: login.php');
+    exit;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,9 +69,9 @@
                 <h3 class="font-weight-bold">Thông tin tài khoản</h3>
                 <hr class="mx-auto">
                 <div class="account-info">
-                    <p>Tên<span>Uy</span></p>
-                    <p>Email<span>leuy091104@gmail.com</span></p>
-                    <p><a href="" id="orders-btn">Đơn hàng của bạn</a></p>
+                    <p>Tên<span><?php if(isset($_SESSION['user_name'])){echo $_SESSION['user_name'];} ?></span></p>
+                    <p>Email<span><?php if(isset($_SESSION['user_email'])){echo $_SESSION['user_email'];}?></span></p>
+                    <p><a href="#orders" id="orders-btn">Đơn hàng của bạn</a></p>
                     <p><a href="" id="logout-btn">Đăng xuất</a></p>
                 </div>
             </div>
@@ -86,7 +97,7 @@
      </section>
 
      <!-- Orders -->
-     <section class="cart container my-5 py-3">
+     <section id="orders" class="cart container my-5 py-3">
         <div class="container mt-2">
             <h2 class="font-weight-bold text-center">Đơn hàng</h2>
             <hr class="mx-auto">
