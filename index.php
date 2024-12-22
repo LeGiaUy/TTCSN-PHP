@@ -148,8 +148,12 @@
             <p>Ở đây bạn có thể xem những chiếc điện thoại nổi bật nhất của chúng tôi</p>
         </div>
         <div class="row mx-auto container-fluid">
+
+            <?php include('server/get_phones.php'); ?>
+
+            <?php while($row = $phones_products->fetch_assoc()){ ?>
             <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/phone1.webp"/>
+                <img class="img-fluid mb-3" src="assets/imgs/<?php echo $row['product_image']; ?>"/>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -157,49 +161,14 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <h5 class="p-name">Iphone 16 Pro Max</h5>
-                <h4 class="p-price">$999</h4>
+                <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                <h4 class="p-price">$<?php echo $row['product_price']; ?></h4>
                 <button classs="buy-btn">Mua Ngay</button>
             </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/phone2.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Iphone 15 Plus</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/phone3.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Samsung Galaxy S24 Ultra</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/phone4.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Samsung Galaxy A55</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
+
+            <?php } ?>
+        </div>
+            
         </div>
       </section>
 
@@ -211,8 +180,13 @@
             <p>Ở đây bạn có thể xem những chiếc laptop nổi bật nhất của chúng tôi</p>
         </div>
         <div class="row mx-auto container-fluid">
+
+            <?php include('server/get_laptops.php'); ?>
+
+            <?php while($row = $laptops_products->fetch_assoc()){ ?>
+
             <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/laptop1.webp"/>
+                <img class="img-fluid mb-3" src="assets/imgs/<?php echo $row['product_image']; ?>"/>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -220,49 +194,13 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <h5 class="p-name">Laptop ASUS Vivobook 15</h5>
-                <h4 class="p-price">$999</h4>
+                <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                <h4 class="p-price">$<?php echo $row['product_price']; ?></h4>
                 <button classs="buy-btn">Mua Ngay</button>
             </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/laptop2.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Laptop Lenovo LOQ</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/laptop3.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Laptop Acer Aspire 3 Spin</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/laptop4.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-           70px;<h5 class="p-name">Laptop ASUS Gaming VivoBook</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
+
+            <?php } ?>
+
         </div>
       </section>
 
@@ -274,8 +212,13 @@
             <p>Những tai nghe tốt nhất của chúng tôi</p>
         </div>
         <div class="row mx-auto container-fluid">
+
+            <?php include('server/get_headphones.php'); ?>
+
+            <?php while($row = $headphones_products->fetch_assoc()){ ?>
+
             <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/headphone1.webp"/>
+                <img class="img-fluid mb-3" src="assets/imgs/<?php echo $row['product_image']; ?>"/>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -283,49 +226,13 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <h5 class="p-name">Tai nghe Bluetooth Apple AirPods 4</h5>
-                <h4 class="p-price">$999</h4>
+                <h5 class="p-name"><?php echo $row['product_name']; ?></h5>
+                <h4 class="p-price">$<?php echo $row['product_price']; ?></h4>
                 <button classs="buy-btn">Mua Ngay</button>
             </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/headphone2.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Tai nghe Bluetooth chụp tai Sony WH-1000XM5</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/headphone3.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Tai nghe Bluetooth True Wireless Baseus Bowie</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/headphone4.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Tai nghe Bluetooth Apple AirPods 4 chống ồn</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
+            
+            <?php } ?>
+
         </div>
       </section>
 
