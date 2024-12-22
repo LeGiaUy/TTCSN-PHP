@@ -7,6 +7,17 @@ if(!isset($_SESSION['logged_in'])){
     exit;
 }
 
+if(isset($_GET['logout'])){
+    if(isset($_SESSION['logged_in'])){
+        unset($_SESSION['logged_in']);
+        unset($_SESSION['user_email']);
+        unset($_SESSION['user_name']);
+
+        header('location: login.php');
+        exit;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +83,7 @@ if(!isset($_SESSION['logged_in'])){
                     <p>Tên<span><?php if(isset($_SESSION['user_name'])){echo $_SESSION['user_name'];} ?></span></p>
                     <p>Email<span><?php if(isset($_SESSION['user_email'])){echo $_SESSION['user_email'];}?></span></p>
                     <p><a href="#orders" id="orders-btn">Đơn hàng của bạn</a></p>
-                    <p><a href="" id="logout-btn">Đăng xuất</a></p>
+                    <p><a href="account.php?logout=1" id="logout-btn">Đăng xuất</a></p>
                 </div>
             </div>
 
