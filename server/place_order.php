@@ -6,6 +6,8 @@ include('connection.php');
 
 if(isset($_POST['place_order'])){
 
+    date_default_timezone_set('Asia/Ho_Chi_Minh');
+
     //1. lay thong tin nguoi dung va luu no vao csdl
     $name = $_POST['name'];
     $email = $_POST['email'];
