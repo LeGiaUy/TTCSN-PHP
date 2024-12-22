@@ -227,7 +227,9 @@ function calculateTotalCart(){
         </div>
 
         <div class="checkout-container">
-            <button class="btn checkout-btn">Thanh toán</button>
+            <form method="POST" action="checkout.php">
+                <input type="submit" class="btn checkout-btn" value="Thanh toán" name="checkout"></input>
+            </form>
         </div>
      </section>
 

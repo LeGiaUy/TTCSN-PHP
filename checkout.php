@@ -1,3 +1,18 @@
+<?php
+
+session_start();
+
+if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
+
+    //de nguoi dung vao trang thanh toan
+}
+// dua nguoi dung ve trang chu
+else{
+    header('location: index.php');
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -58,7 +73,7 @@
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form id="checkout-form">
+            <form id="checkout-form" action="place_order.php" method="POST">
                 <div class="form-group checkout-small-element">
                     <label>Tên</label>
                     <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Tên" required/>
@@ -80,7 +95,8 @@
                     <input type="text" class="form-control" id="checkout-address" name="address" placeholder="Địa chỉ" required/>
                 </div>
                 <div class="form-group checkout-btn-container">
-                    <input type="submit" class="btn" id="checkout-btn" value="Thanh toán"/>
+                    <p>Tổng tiền: $ <?php echo $_SESSION['total']?></p>
+                    <input type="submit" class="btn" id="checkout-btn" name="place_order" value="Đặt hàng"/>
                 </div>
             </form>
         </div>
