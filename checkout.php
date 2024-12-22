@@ -56,7 +56,7 @@ else{
             </li>
             
             <li class="nav-item">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
                 <a href="account.html"><i class="fas fa-user"></i></a>
             </li>       
 
@@ -73,7 +73,7 @@ else{
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container">
-            <form id="checkout-form" action="place_order.php" method="POST">
+            <form id="checkout-form" action="server/place_order.php" method="POST">
                 <div class="form-group checkout-small-element">
                     <label>Tên</label>
                     <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Tên" required/>

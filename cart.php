@@ -87,7 +87,7 @@ else if(isset($_POST['edit_quantity'])) {
 }
 
 else{
-    header('location: index.php');
+    // header('location: index.php');
 }
 
 function calculateTotalCart(){
@@ -154,7 +154,7 @@ function calculateTotalCart(){
             </li>
             
             <li class="nav-item">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
                 <a href="account.html"><i class="fas fa-user"></i></a>
             </li>       
 
