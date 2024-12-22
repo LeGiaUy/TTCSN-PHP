@@ -30,7 +30,7 @@ if(isset($_POST['login_btn'])){
             $_SESSION['user_email'] = $user_email;
             $_SESSION['logged_in'] = true;
 
-            header('location: account.php?message=Đăng nhập thành công');
+            header('location: account.php?login_success=Đăng nhập thành công');
         }
         else{
             header('location: login.php?error=Sai tài khoản hoặc mật khẩu');

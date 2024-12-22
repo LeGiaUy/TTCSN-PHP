@@ -52,15 +52,17 @@ if(isset($_POST['register'])){
         
             //neu tao tai khoan thanh cong
             if($stmt->execute()){
+                $user_id = $stmt->insert_id;
+                $_SESSION = $user_id;
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $name;
                 $_SESSION['logged_in'] = true;
-                header('location: account.php?register=Bạn đã đăng ký thành công');
+                header('location: account.php?register_success=Bạn đã đăng ký thành công');
             }
             //neu khong the tao tai khoan
             else{
 
-                header('location: account.php?error=Không thể tạo tài khoảng');
+                header('location: account.php?error=Không thể tạo tài khoản');
 
             }
         }

@@ -2,6 +2,8 @@
 
 session_start();
 
+include('server/connection.php');
+
 if(!isset($_SESSION['logged_in'])){
     header('location: login.php');
     exit;
@@ -16,6 +18,38 @@ if(isset($_GET['logout'])){
         header('location: login.php');
         exit;
     }
+}
+
+if(isset($_POST['change_password'])){
+
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    $user_email = $_SESSION['user_email'];
+
+    if($password !== $confirmPassword) {
+        header('location: account.php?error=Mật khẩu không trùng');
+    }
+
+    //neu mat khau it hon 6 ki tu
+    else if(strlen($password) < 6){
+        header('location: account.php?error=Mật khẩu phải có ít nhất 6 kí tự');
+    }
+    //khong co loi
+    else{
+
+    $stmt = $conn->prepare("UPDATE users SET user_password=? WHERE user_email=?");
+    $stmt->bind_param('ss', md5($password),$user_email);
+
+    if($stmt->execute()){
+        header('location: account.php?message=Mật khẩu đã được thay đổi');
+    }
+
+    else{
+        header('location: account.php?error=Có lỗi xảy ra khi thay đổi mật khẩu');
+    }
+
+    }
+
 }
 
 ?>
@@ -77,6 +111,8 @@ if(isset($_GET['logout'])){
      <section class="my-5 py-5">
         <div class="row container mx-auto">
             <div class="text-center mt-3 pt-5 col-lg-6 col-md-12 col-sm-12">
+                <p class="text-center" style="color:green"><?php if(isset($_GET['register_success'])){echo $_GET['register_success']; }?></p>    
+                <p class="text-center" style="color:green"><?php if(isset($_GET['login_success'])){echo $_GET['login_success']; }?></p>    
                 <h3 class="font-weight-bold">Thông tin tài khoản</h3>
                 <hr class="mx-auto">
                 <div class="account-info">
@@ -88,7 +124,9 @@ if(isset($_GET['logout'])){
             </div>
 
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <form id="account-form">
+                <form id="account-form" method="POST" action="account.php">
+                    <p class="text-center" style="color:red"><?php if(isset($_GET['error'])){echo $_GET['error']; }?></p>
+                    <p class="text-center" style="color:green"><?php if(isset($_GET['message'])){echo $_GET['message']; }?></p>
                     <h3>Đổi mật khẩu</h3>
                     <hr class="mx-auto">
                     <div class="form-group">
@@ -100,7 +138,7 @@ if(isset($_GET['logout'])){
                         <input type="password" class="form-control" id="confirm-password" name="confirmPassword" placeholder="Nhập lại mật khẩu" required/>
                     </div>
                     <div class="form-group">
-                        <input type="submit" value="Đổi mật khẩu" class="btn" id="change-pass-btn">
+                        <input type="submit" name="change_password" value="Đổi mật khẩu" class="btn" id="change-pass-btn">
                     </div>
                 </form>
             </div>
