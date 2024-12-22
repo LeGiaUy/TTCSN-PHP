@@ -25,7 +25,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             
             <li class="nav-item">
-                <a class="nav-link" href="index.html">Trang chủ</a>
+                <a class="nav-link" href="index.php">Trang chủ</a>
             </li>
             
             <li class="nav-item">
@@ -108,9 +108,14 @@
             <hr class="mx-auto">
             <p>Ở đây bạn có thể xem những sản phẩm nổi bật nhất của chúng tôi</p>
         </div>
+
         <div class="row mx-auto container-fluid">
+        <?php include('server/get_featured_products.php'); ?>
+
+        <?php while($row = $featured_products->fetch_assoc()){ ?>
+            
             <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/featured1.webp"/>
+                <img class="img-fluid mb-3" src="assets/imgs/<?php echo $row['product_image']; ?>"/>
                 <div class="star">
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
@@ -118,49 +123,11 @@
                     <i class="fas fa-star"></i>
                     <i class="fas fa-star"></i>
                 </div>
-                <h5 class="p-name">Iphone 16 Pro Max</h5>
-                <h4 class="p-price">$999</h4>
+                <h5 class="p-name"><?php echo $row['product_name'];?></h5>
+                <h4 class="p-price">$<?php echo $row['product_price'];?></h4>
                 <button classs="buy-btn">Mua Ngay</button>
             </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/featured2.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Iphone 16 Pro Max</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/featured3.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Iphone 16 Pro Max</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
-            <div class="product text-center col-lg-3 col-md-4 col-sm-12">
-                <img class="img-fluid mb-3" src="assets/imgs/featured4.webp"/>
-                <div class="star">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                </div>
-                <h5 class="p-name">Iphone 16 Pro Max</h5>
-                <h4 class="p-price">$999</h4>
-                <button classs="buy-btn">Mua Ngay</button>
-            </div>
+        <?php } ?>
         </div>
       </section>
 
