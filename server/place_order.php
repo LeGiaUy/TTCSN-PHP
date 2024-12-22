@@ -24,10 +24,11 @@ if(isset($_POST['place_order'])){
 
     $stmt->execute();
 
+    //2. tao va luu thong tin don hang vao csdl
     $order_id = $stmt->insert_id;
 
 
-    //2. lay san pham tu gio hang
+    //3. lay san pham tu gio hang
     foreach($_SESSION['cart'] as $key => $value){
 
         $product = $_SESSION['cart'][$key];
@@ -37,6 +38,7 @@ if(isset($_POST['place_order'])){
         $product_price = $product['product_price'];
         $product_quantity = $product['product_quantity'];
 
+        //4. luu tung san pham vao order_items trong csdl
         $stmt1 = $conn->prepare("INSERT INTO order_items (order_id,product_id,product_name,product_image,product_price,product_quantity,user_id,order_date)
                         VALUES (?,?,?,?,?,?,?,?)");
 
@@ -45,23 +47,12 @@ if(isset($_POST['place_order'])){
         $stmt1->execute();
     }
 
-
-    //3. luu thong tin don hang vao csdl
-
-
-    
-    //4. luu tung san pham vao order_items trong csdl
-
-
-
-    //5. xoa moi thu koi gio hang
-    
+    //5. xoa moi thu koi gio hang -> cho den khi thanh toan xong
+    //unset($_SESSION['cart']);
 
 
     //6. thong bao rang thanh toan thanh cong hoac co van de
-
-
-
+    header('location: ../payment.php?order_status=Đặt hàng thành công');
 
 }
 
