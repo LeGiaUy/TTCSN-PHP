@@ -21,6 +21,7 @@ if(isset($_POST['order_pay_btn'])){
         
         <?php if (isset($_POST['order_status']) && $_POST['order_status'] == "Chưa thanh toán"){?> 
             <?php $amount = strval($_POST['order_total_price']) ?>
+            <?php $order_id = $_POST['order_id']; ?>
             <p>Tổng thanh toán: $<?php echo $_POST['order_total_price']; ?></p>
             <!-- <input class="btn btn-primary" type="submit" value="Thanh Toán Ngay"/>  -->
              <!-- Set up a container element for the button -->
@@ -30,6 +31,7 @@ if(isset($_POST['order_pay_btn'])){
         
         <?php } else if(isset($_SESSION['total']) && $_SESSION['total'] != 0){ ?>
             <?php $amount = strval($_SESSION['total']) ?>
+            <?php $order_id = $_SESSION['order_id']; ?>
             <p>Tổng thanh toán: $<?php echo $_SESSION['total']; ?></p>
             <!-- <input class="btn btn-primary" type="submit" value="Thanh Toán Ngay"/>  -->
              <!-- Set up a container element for the button -->
@@ -67,7 +69,13 @@ if(isset($_POST['order_pay_btn'])){
                 return actions.order.capture().then(function(orderData) {
                     // Successful capture! For dev/demo purposes:
                     console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
-                    alert('Transaction completed by ' + orderData.payer.name.given_name);
+                    
+                    // Lấy transaction ID và status từ orderData
+                    const transaction = orderData.purchase_units[0].payments.captures[0];
+                    alert('Transaction ' + transaction.status + ' : ' + transaction.id + '\nSee console for all available details.');
+
+                    // Chuyển hướng đến trang hoàn tất thanh toán
+                    window.location.href = "server/complete_payment.php?transaction_id=" + transaction.id + "&order_id=" + <?php echo $order_id; ?>;
                 });
             }
         }).render('#paypal-button-container');

@@ -65,7 +65,7 @@ else{
         //5. xoa moi thu koi gio hang -> cho den khi thanh toan xong
         //unset($_SESSION['cart']);
     
-    
+        $_SESSION['order_id'] = $order_id;
         //6. thong bao rang thanh toan thanh cong hoac co van de
         header('location: ../payment.php?order_status=Đặt hàng thành công');
     
