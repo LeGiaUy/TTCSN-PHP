@@ -89,7 +89,7 @@ if (isset($_GET['product_id'])) {
             
                 <div class="col-lg-5 col-md-6 col-sm-12">
                     <img class="img-fluid w-100 pb-1" src="assets/imgs/<?php echo $row['product_image']; ?>" id="mainImg"/>
-                    <div class="small-img-group">
+                    <!-- <div class="small-img-group">
                         <div class="small-img-col">
                             <img src="assets/imgs/<?php echo $row['product_image']; ?>" width="100%" class="small-img"/>
                         </div>
@@ -102,11 +102,11 @@ if (isset($_GET['product_id'])) {
                         <div class="small-img-col">
                             <img src="assets/imgs/<?php echo $row['product_image4']; ?>" width="100%" class="small-img"/>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <div class="col-lg-6 col-md-12 col-sm-12">
-                    <h6>Apple</h6>
+                    <h6>Chi tiết sản phẩm</h6>
                     <h3 class="py-4"><?php echo $row['product_name']; ?></h3>
                     <h2>$<?php echo $row['product_price']; ?></h2>
 
@@ -132,14 +132,14 @@ if (isset($_GET['product_id'])) {
     </section>
 
     <!-- Related Products -->
-    <section id="related-products" class="my-5 pb-5">
+    <!-- <section id="related-products" class="my-5 pb-5">
         <div class="container text-center mt-5 py-5">
             <h3>Sản Phẩm Liên Quan</h3>
             <hr class="mx-auto">
             <p>Ở đây bạn có thể xem những sản phẩm liên quan đến sản phẩm trên</p>
         </div>
         <div class="row mx-auto container-fluid">
-            <!-- You can update these with dynamic content as needed -->
+
             <div class="product text-center col-lg-3 col-md-4 col-sm-12">
                 <img class="img-fluid mb-3" src="assets/imgs/featured1.webp"/>
                 <div class="star">
@@ -154,7 +154,7 @@ if (isset($_GET['product_id'])) {
                 <button class="buy-btn">Mua Ngay</button>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <!-- Footer -->
     <footer class="mt-5 py-5">

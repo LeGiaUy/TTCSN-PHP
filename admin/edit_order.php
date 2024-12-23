@@ -50,6 +50,7 @@ if (isset($_POST['update_btn'])) {
 ?>
 
 <body>
+    <?php include('sidemenu.php'); ?>
     <div class="content">
         <h1>Update Order Status</h1>
         <form action="edit_order.php?order_id=<?php echo $order_id; ?>" method="POST">
