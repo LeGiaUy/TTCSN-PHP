@@ -1,48 +1,29 @@
 <?php
-
 include('server/connection.php');
 
-if(isset($_POST['search'])){
+// Biến mặc định cho danh mục
+$category = 'all';
 
-    $category = $_POST['category'];
+if (isset($_POST['search'])) {
+    $category = $_POST['category']; // Lấy giá trị danh mục từ form
 
-    
-    if($category == 'all'){
+    if ($category == 'all') {
         $stmt = $conn->prepare("SELECT * FROM products");
-
         $stmt->execute();
-
         $products = $stmt->get_result();
-
-    }
-    else {
-
+    } else {
         $stmt = $conn->prepare("SELECT * FROM products WHERE product_category=?");
-
         $stmt->bind_param("s", $category);
-
         $stmt->execute();
-
         $products = $stmt->get_result();
-
-
     }
-
-}
-
-else{
-
+} else {
     $stmt = $conn->prepare("SELECT * FROM products");
-
     $stmt->execute();
-
     $products = $stmt->get_result();
-
 }
-
-
-
 ?>
+
 
 <?php include('layouts/header.php') ?>
 
@@ -54,40 +35,41 @@ else{
             <hr>
             </div>
             
-            <form class="row mx-auto container" aciton="shop.php" method="POST">
-            <div class="col-lg-12 col-md-12 col-sm-12">
-                <p>Danh mục</p>
+            <form class="row mx-auto container" action="shop.php" method="POST">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <p>Danh mục</p>
 
-                <div class="form-check">
-                    <input class="form-check-input" value="all" type="radio" name="category" id="category_one" checked>
-                    <label class="form-check-label" for="category_one">Tất cả</label>
-                </div>
-                
-                <div class="form-check">
-                    <input class="form-check-input" value="phones" type="radio" name="category" id="category_one">
-                    <label class="form-check-label" for="category_one">Điện thoại</label>
-                </div>
-                
-                <div class="form-check">
-                    <input class="form-check-input" value="laptops" type="radio" name="category" id="category_two">
-                    <label class="form-check-label" for="category_two">Laptops</label>
-                </div>
-                
-                <div class="form-check">
-                    <input class="form-check-input" value="headphones" type="radio" name="category" id="category_three">
-                    <label class="form-check-label" for="category_three">Tai nghe</label>
-                </div>
-                
-                <div class="form-check">
-                    <input class="form-check-input" value="accessories" type="radio" name="category" id="category_four">
-                    <label class="form-check-label" for="category_four">Phụ kiện</label>
-                </div>
-            </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="all" type="radio" name="category" id="category_all" <?php if ($category == 'all') echo 'checked'; ?>>
+                        <label class="form-check-label" for="category_all">Tất cả</label>
+                    </div>
 
-            <div class="form-group my-3 mx-3">
-                <input type="submit" name="search" value="search" class="btn btn-primary">
-            </div>
+                    <div class="form-check">
+                        <input class="form-check-input" value="phones" type="radio" name="category" id="category_phones" <?php if ($category == 'phones') echo 'checked'; ?>>
+                        <label class="form-check-label" for="category_phones">Điện thoại</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" value="laptops" type="radio" name="category" id="category_laptops" <?php if ($category == 'laptops') echo 'checked'; ?>>
+                        <label class="form-check-label" for="category_laptops">Laptops</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" value="headphones" type="radio" name="category" id="category_headphones" <?php if ($category == 'headphones') echo 'checked'; ?>>
+                        <label class="form-check-label" for="category_headphones">Tai nghe</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" value="accessories" type="radio" name="category" id="category_accessories" <?php if ($category == 'accessories') echo 'checked'; ?>>
+                        <label class="form-check-label" for="category_accessories">Phụ kiện</label>
+                    </div>
+                </div>
+
+                <div class="form-group my-3 mx-3">
+                    <input type="submit" name="search" value="Tìm kiếm" class="btn btn-primary">
+                </div>
             </form>
+
         </section>
     
 
