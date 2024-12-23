@@ -2,7 +2,7 @@
 
 session_start();
 
-if(!empty($_SESSION['cart']) && isset($_POST['checkout'])){
+if(!empty($_SESSION['cart'])){
 
     //de nguoi dung vao trang thanh toan
 }
@@ -23,7 +23,14 @@ else{
         </div>
         <div class="mx-auto container">
             <form id="checkout-form" action="server/place_order.php" method="POST">
-                <div class="form-group checkout-small-element">
+            <p class="text-center" style="color:red;">
+                <?php if (isset($_GET['message'])){echo $_GET['message'];} ?></p>
+                <?php if(isset($_GET['message'])) { ?>   
+
+                    <a href="login.php" class="btn btn-primary">Đăng nhập</a>
+               
+                <?php }?>
+            <div class="form-group checkout-small-element">
                     <label>Tên</label>
                     <input type="text" class="form-control" id="checkout-name" name="name" placeholder="Tên" required/>
                 </div>

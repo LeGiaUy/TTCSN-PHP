@@ -2,6 +2,11 @@
 
 session_start();
 
+if(isset($_POST['order_pay_btn'])){
+    $order_status = $_POST['order_status'];
+    $order_total_price = $_POST['order_total_price'];
+}
+
 ?>
 
 <?php include('layouts/header.php') ?>
@@ -13,15 +18,19 @@ session_start();
             <hr class="mx-auto">
         </div>
         <div class="mx-auto container text-center">
-            <p><?php if(isset($_GET['order_status'])){ echo $_GET['order_status']; }?></p>
-            <p>Tổng thanh toán: $<?php if(isset($_SESSION['total'])){ echo $_SESSION['total']; }?></p>
-            <?php if(isset($_SESSION['total'])){ ?>
-            <input class="btn btn-primary" type="submit" value="Thanh Toán Ngay"/>
-            <?php }?>
+            
+        <?php if(isset($_SESSION['total']) && $_SESSION['total'] != 0){ ?>
+            <p>Tổng thanh toán: $<?php echo $_SESSION['total']; ?></p>
+            <input class="btn btn-primary" type="submit" value="Thanh Toán Ngay"/> 
 
-            <?php if(isset($_GET['order_status']) && $_GET['order_status'] == "Chưa thanh toán"){ ?>
-            <input class="btn btn-primary" type="submit" value="Thanh Toán Ngay"/>
-            <?php }?>
+        <?php } else if (isset($_POST['order_status']) && $_POST['order_status'] == "Chưa thanh toán"){?> 
+            <p>Tổng thanh toán: $<?php echo $_POST['order_total_price']; ?></p>
+            <input class="btn btn-primary" type="submit" value="Thanh Toán Ngay"/> 
+
+        <?php } else{ ?>
+            <p>Bạn không có đơn hàng</p>
+        <?php } ?>
+
         </div>
      </section>
 <?php include('layouts/footer.php') ?>
