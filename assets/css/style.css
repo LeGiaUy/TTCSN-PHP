@@ -615,3 +615,47 @@ th:last-child{
     height: auto; /* Đảm bảo giữ chiều cao tự động */
 }
 
+/* Container tổng */
+#product-page {
+    display: flex; /* Dùng Flexbox để xếp hàng ngang */
+    flex-wrap: nowrap; /* Đảm bảo không xuống dòng */
+    align-items: flex-start; /* Căn phần tử lên đầu */
+    padding: 20px;
+    gap: 20px; /* Khoảng cách giữa phần tìm kiếm và sản phẩm */
+}
+
+/* Phần tìm kiếm (bên trái) */
+#search {
+    flex: 0 0 25%; /* Chiếm 25% chiều rộng của container */
+    max-width: 25%; /* Đảm bảo không vượt quá 25% */
+    background-color: #f9f9f9; /* Màu nền */
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 200px;
+    max-width: 240px;
+}
+
+/* Phần danh sách sản phẩm (bên phải) */
+#shop {
+    flex: 1; /* Chiếm toàn bộ không gian còn lại */
+    max-width: 75%; /* Đảm bảo không vượt quá 75% */
+}
+
+@media (max-width: 768px) {
+    #product-page {
+        flex-wrap: wrap; /* Đổi thành dọc khi xuống dòng */
+    }
+
+    #search, #shop {
+        flex: 0 0 100%; /* Chiếm toàn bộ chiều rộng */
+        max-width: 100%; /* Không vượt quá chiều rộng */
+    }
+
+    #search {
+        margin-bottom: 20px; /* Thêm khoảng cách giữa các phần */
+    }
+}
+
+
