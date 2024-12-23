@@ -52,6 +52,21 @@ if(isset($_POST['change_password'])){
 
 }
 
+//hien don hang
+if(isset($_SESSION['logged_in'])){
+
+    $user_id = $_SESSION['logged_in'];
+
+    $stmt = $conn->prepare("SELECT * FROM orders WHERE user_id=?");
+
+    $stmt->bind_param('i', $_SESSION['user_id']);
+
+    $stmt->execute();
+
+    $orders = $stmt->get_result();
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -145,34 +160,50 @@ if(isset($_POST['change_password'])){
         </div>
      </section>
 
-     <!-- Orders -->
-     <section id="orders" class="cart container my-5 py-3">
-        <div class="container mt-2">
-            <h2 class="font-weight-bold text-center">Đơn hàng</h2>
-            <hr class="mx-auto">
-        </div>
+    <!-- Orders -->
+    <section id="orders" class="cart container my-5 py-3">
+    <div class="container mt-2">
+        <h2 class="font-weight-bold text-center">Đơn hàng</h2>
+        <hr class="mx-auto">
+    </div>
 
-        <table class="mt-5 pt-5">
-            <tr>
-                <th>Sản phẩm</th>
-                <th>Date</th>
-            </tr>
-            <tr>
-                <td>
-                    <div class="product-info">
-                        <img src="assets/imgs/featured1.webp"/>
-                        <div>
-                            <p class="mt-3">Iphone 16 Pro Max</p>
-                        </div>
-                    </div>
-                </td>
+    <table class="mt-5 pt-5">
+        <tr>
+            <th>ID Đơn Hàng</th>
+            <th>Giá Đơn hàng</th>
+            <th>Trạng thái đơn hàng</th>
+            <th>Ngày đặt đơn</th>
+            <th>Chi tiết đơn hàng</th>
+        </tr>
 
-                <td>
-                    <span>2024-12-22</span>
-                </td>
-            </tr>
-        </table>
-     </section>
+        <?php while($row = $orders->fetch_assoc()) {?>
+        <tr>
+            <td>
+                <span><?php echo $row['order_id'] ?></span>
+            </td>
+
+            <td>
+                <span><?php echo $row['order_cost'] ?></span>
+            </td>
+
+            <td>
+                <span><?php echo $row['order_status'] ?></span>
+            </td>
+
+            <td>
+                <span><?php echo $row['order_date'] ?></span>
+            </td>
+
+            <td>
+            <form method="POST" action="order_details.php">
+                    <input type="hidden" value="<?php echo $row['order_id']; ?>" name="order_id"></input>
+                    <input class="order-details-btn" name="order_details_btn" type="submit" value="Xem"/>
+                </form>
+            </td>
+        </tr>
+        <?php }?>
+    </table>
+    </section>
 
     <!-- Footer -->
     <footer class="mt-5 py-5">

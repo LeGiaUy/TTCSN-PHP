@@ -528,6 +528,13 @@ th:last-child{
     border-collapse: collapse;
 }
 
+.order-details-btn{
+    border-radius: 10%;
+    border: none;
+    color: #fff;
+    background-color: #fb774b;
+}
+
 .orders .product-info{
     display: flex;
     flex-wrap: wrap;
@@ -537,12 +544,12 @@ th:last-child{
     padding: 5px 10px;
     background-color: #fb774b;
     color: #fff;
-    text-align: left;
+    /* text-align: left; */
 }
 
-.orders th:nth-child(2){
+/* .orders th:nth-child(2){
     text-align: right;
-}
+} */
 
 .orders td{
     padding: 10px 20px;
