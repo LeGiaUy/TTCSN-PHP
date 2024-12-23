@@ -588,3 +588,30 @@ th:last-child{
 #contact span{
     color: #fb774b;
 }
+
+.cart-quantity{
+    background-color: #fb774b;
+    color: #fff;
+    padding: 2px 5px;
+    border-radius: 50%;
+    margin: -6px;
+    font-size: 1rem;
+}
+
+
+.paypal-container {
+    display: flex;
+    justify-content: center; /* Căn giữa ngang */
+    align-items: center; /* Căn giữa dọc */
+    margin-top: 50px; /* Di chuyển nút lên trên */
+    height: auto; /* Bỏ chiều cao cố định để không gây ảnh hưởng */
+}
+
+.paypal-button iframe {
+    transform: scale(1.5); /* Phóng to iframe của nút PayPal */
+    transform-origin: center; /* Đảm bảo căn chỉnh trung tâm */
+    border: none; /* Loại bỏ đường viền nếu có */
+    width: auto; /* Đảm bảo giữ kích thước tự động */
+    height: auto; /* Đảm bảo giữ chiều cao tự động */
+}
+
