@@ -64,17 +64,17 @@ if (isset($_GET['product_id'])) {
                         <a class="nav-link" href="index.php">Trang chủ</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Cửa hàng</a>
+                        <a class="nav-link" href="shop.php">Cửa hàng</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Liên Hệ</a>
+                        <a class="nav-link" href="contact.php">Liên Hệ</a>
                     </li>
                     <li class="nav-item">
-                        <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                        <a href="account.html"><i class="fas fa-user"></i></a>
+                        <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="account.php"><i class="fas fa-user"></i></a>
                     </li>       
                 </ul>
             </div>
