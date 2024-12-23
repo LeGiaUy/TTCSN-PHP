@@ -1,12 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+<?php 
+include('header.php'); 
+
+session_start();
+// Kiểm tra nếu người dùng chưa đăng nhập, chuyển hướng về trang login
+if(!isset($_SESSION['admin_logged_in'])){
+    header('location: login.php');
+    exit;
+}
+?>
 <body>
+    <!-- Sidebar -->
     <div class="sidebar">
         <h2>Admin Dashboard</h2>
         <ul>
@@ -15,11 +18,15 @@
             <li><a href="manage_customers.php">Manage Customers</a></li>
             <li><a href="create_product.php">Create Product</a></li>
             <li><a href="manage_accounts.php">Manage Accounts</a></li>
+            <li><a href="logout.php?logout=1">Đăng xuất</a></li>
         </ul>
     </div>
+
+    <!-- Content -->
     <div class="content">
         <h1>Welcome to Admin Dashboard</h1>
         <p>Select an option from the sidebar.</p>
     </div>
+    
 </body>
 </html>
