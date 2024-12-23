@@ -6,13 +6,27 @@ if(isset($_POST['search'])){
 
     $category = $_POST['category'];
 
-    $stmt = $conn->prepare("SELECT * FROM products WHERE product_category=?");
+    
+    if($category == 'all'){
+        $stmt = $conn->prepare("SELECT * FROM products");
 
-    $stmt->bind_param("s", $category);
+        $stmt->execute();
 
-    $stmt->execute();
+        $products = $stmt->get_result();
 
-    $products = $stmt->get_result();
+    }
+    else {
+
+        $stmt = $conn->prepare("SELECT * FROM products WHERE product_category=?");
+
+        $stmt->bind_param("s", $category);
+
+        $stmt->execute();
+
+        $products = $stmt->get_result();
+
+
+    }
 
 }
 
@@ -43,6 +57,11 @@ else{
             <form class="row mx-auto container" aciton="shop.php" method="POST">
             <div class="col-lg-12 col-md-12 col-sm-12">
                 <p>Danh mục</p>
+
+                <div class="form-check">
+                    <input class="form-check-input" value="all" type="radio" name="category" id="category_one" checked>
+                    <label class="form-check-label" for="category_one">Tất cả</label>
+                </div>
                 
                 <div class="form-check">
                     <input class="form-check-input" value="phones" type="radio" name="category" id="category_one">
@@ -50,17 +69,17 @@ else{
                 </div>
                 
                 <div class="form-check">
-                    <input class="form-check-input" value=laptops"" type="radio" name="category" id="category_two" checked>
+                    <input class="form-check-input" value="laptops" type="radio" name="category" id="category_two">
                     <label class="form-check-label" for="category_two">Laptops</label>
                 </div>
                 
                 <div class="form-check">
-                    <input class="form-check-input" value="headphones" type="radio" name="category" id="category_three" checked>
+                    <input class="form-check-input" value="headphones" type="radio" name="category" id="category_three">
                     <label class="form-check-label" for="category_three">Tai nghe</label>
                 </div>
                 
                 <div class="form-check">
-                    <input class="form-check-input" value="accessories" type="radio" name="category" id="category_four" checked>
+                    <input class="form-check-input" value="accessories" type="radio" name="category" id="category_four">
                     <label class="form-check-label" for="category_four">Phụ kiện</label>
                 </div>
             </div>
@@ -98,7 +117,7 @@ else{
                 
                 <?php }?>
 
-                <nav aria-label="Page navigation example">
+                <!-- <nav aria-label="Page navigation example">
                     <ul class="pagination mt-5">
                         <li class="page-item"><a class="page-link" href="#">Trước</a></li>
                         <li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -106,7 +125,7 @@ else{
                         <li class="page-item"><a class="page-link" href="#">3</a></li>
                         <li class="page-item"><a class="page-link" href="#">Sau</a></li>
                     </ul>
-                </nav>
+                </nav> -->
             </div>
         </section>
     </div>
